@@ -61,16 +61,20 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sprint8:build:development"
+          },
           "configurations": {
             "production": {
-              "buildTarget": "sprint8:build:production"
+              "browserTarget": "sprint8:build:production"
             },
             "development": {
-              "buildTarget": "sprint8:build:development"
+              "browserTarget": "sprint8:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
+        
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -97,5 +101,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
