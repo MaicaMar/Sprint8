@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { MapComponent } from './map/map.component';
-import { FullCalendarComponent } from './full-calendar/full-calendar.component';
-import { GraphicsComponent } from './graphics/graphics.component';
+import { MapComponent } from './components/map/map.component';
+import { FullCalendarComponent } from './components/full-calendar/full-calendar.component';
+import { GraphicsComponent } from './components/graphics/graphics.component';
 
 export const routes: Routes = [
     {
