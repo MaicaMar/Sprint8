@@ -1,0 +1,19 @@
+.bg-bar {
+    background-color: #354259;
+}
+
+.nav-logo {   
+    font-weight: 900;
+    font-style: italic;
+    font-size: 25px;
+    color: white;
+}
+
+.navbar-nav a {
+    color: #C2DED1;
+    margin-left: 20px;
+}
+
+.navbar-nav a:hover {
+    color: white;
+}

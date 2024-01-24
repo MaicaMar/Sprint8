@@ -1,0 +1,72 @@
+/* TABLE HEADER / DROPDOWN LIST */
+
+h4 {
+    font-weight: 600;
+    margin-top: 6px;
+    color: #354259;
+}
+
+.userList-header {
+    background-color: #CDC2AE;
+    border-bottom: solid 1px #354259;
+    vertical-align: middle;
+}
+
+.btn-newUser {
+    background-color: #354259;
+    color: #CDC2AE;
+}
+
+.form-bg-color {
+    background-color: #ECE5C7;
+}
+
+
+/* TABLE LIST */
+
+tr th {
+    font-weight:500;
+    padding-left: 25px;
+    color: #354259;
+    vertical-align: middle;
+}
+
+tr td {
+    font-weight:200;
+    padding-left: 25px;
+    color: #354259;
+    vertical-align: middle;
+}
+
+tr td button {
+    vertical-align: middle;
+}
+
+.btn {
+    box-shadow: 1px 1px 2.5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.btn-submit-edit {
+    background-color: #354259;
+    color: #CDC2AE;
+}
+
+.btn-cancel-delete {
+    background-color: #A25772;
+    color: #CDC2AE;
+}
+
+
+
+/* TABLE FOOTER */
+.bg-footer-table {
+    background-color: #CDC2AE;
+    border-top: solid 1px #354259;
+}
+
+.btn-showMore {
+    background-color: #354259;
+    color: #CDC2AE;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

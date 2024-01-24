@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { MapComponent } from './components/map/map.component';
-import { FullCalendarComponent } from './components/full-calendar/full-calendar.component';
 import { GraphicsComponent } from './components/graphics/graphics.component';
+import { MapComponent } from './components/map/map.component';
+import { FoolCalendarComponent } from './components/fool-calendar/fool-calendar.component';
+import { HomeComponent } from './components/home/home.component';
+import { EditUserModalComponent } from './components/home/edit-user-modal/edit-user-modal.component';
 
 export const routes: Routes = [
     {
@@ -10,24 +11,24 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
+        path: 'edit-user-modal',
+        component: EditUserModalComponent
+    },
+    {
         path: 'map',
         component: MapComponent
     },
     {
-        path: 'full-calendar',
-        component: FullCalendarComponent
+        path: 'fool-calendar',
+        component: FoolCalendarComponent
     },
     {
         path: 'graphics',
         component: GraphicsComponent
     },
     {
-        path: '**',
-        redirectTo: '/home'
-    },
-    // {
-    //     path: '',
-    //     redirectTo: 'home',
-    //     pathMatch: 'full'
-    // }
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+    }
 ];

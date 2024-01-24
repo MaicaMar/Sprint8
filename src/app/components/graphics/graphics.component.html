@@ -1,1 +1,22 @@
-<p>graphics works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+          <h2>Gráfico de Barras</h2>
+          <canvas
+            baseChart
+            class="chart"
+            [data]="barChartData"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [type]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"
+          >
+          </canvas>
+          <button class=" btn btn-update" (click)="randomize()">
+            Update
+          </button>
+        </div>
+    </div>
+</div>
+
