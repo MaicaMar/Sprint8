@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
   flagCrearUsuario: boolean = false;
   userForm: FormGroup;
 
+  flagMostrarUsuario: boolean = false;
+
 
   constructor(private userService: UserService, private modalService: NgbModal) {
     this.userForm = new FormGroup({
@@ -36,7 +38,7 @@ export class HomeComponent implements OnInit {
       hobby: new FormControl('')
     });
   }
-  
+
 
   ngOnInit(): void {
     this.loadUsers();
@@ -77,7 +79,7 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  
+
   cancelarCreacion(): void {
     this.flagCrearUsuario = false; // Ocultar formulario sin enviar
   }
@@ -106,7 +108,12 @@ export class HomeComponent implements OnInit {
   deleteUser(id: number | undefined): void {
     if (id === undefined) return;
     this.userService.deleteUser(id).subscribe(() => {
+      alert('Usuario eliminado con éxito.');
+      // Restablecer la página actual a 1 y recargar los usuarios
+      this.currentPage = 1;
       this.loadUsers();
+    }, (error) => {
+      console.error('Error al eliminar usuario:', error);
     });
   }
 

@@ -1,0 +1,26 @@
+.modal-header {
+  background-color: #CDC2AE;
+  color: #354259;
+}
+
+.modal-body {
+  background-color: #C2DED1;
+}
+
+.modal-footer {
+  background-color: #CDC2AE;
+}
+
+.btn {
+  box-shadow: 1px 1px 2.5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.btn-save {
+  background-color: #354259;
+  color: #CDC2AE;
+}
+
+.btn-cancel {
+  background-color: #A25772;
+  color: #CDC2AE;
+}

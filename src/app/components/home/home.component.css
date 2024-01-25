@@ -1,24 +1,18 @@
 /* TABLE HEADER / DROPDOWN LIST */
 
-h4 {
+h2 {
     font-weight: 600;
-    margin-top: 6px;
     color: #354259;
 }
 
 .userList-header {
     background-color: #CDC2AE;
     border-bottom: solid 1px #354259;
-    vertical-align: middle;
 }
 
-.btn-newUser {
+.btn-new-show-user {
     background-color: #354259;
     color: #CDC2AE;
-}
-
-.form-bg-color {
-    background-color: #ECE5C7;
 }
 
 
@@ -29,6 +23,8 @@ tr th {
     padding-left: 25px;
     color: #354259;
     vertical-align: middle;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 tr td {
@@ -36,10 +32,17 @@ tr td {
     padding-left: 25px;
     color: #354259;
     vertical-align: middle;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 tr td button {
     vertical-align: middle;
+}
+
+.row.userList-header {
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .btn {

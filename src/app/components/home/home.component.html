@@ -1,14 +1,23 @@
 <!-- home.component.html -->
 <div class="container mt-5">
-    <div class="d-flex align-items-center userList-header">
-      <div class="col">
-        <h4 class="py-2 ms-4">User List</h4>
+    <div class="row userList-header align-items-center">
+      <div class="col d-flex flex-row">
+        <h2 class="ms-4 pt-2">User List</h2>
       </div>
-      <div class="col d-flex flex-row-reverse pe-3">
-        <button class="justify-content-end btn btn-sm btn-newUser" (click)="mostrarFormularioCrear()">New User</button>
+      <div class="col d-flex flex-row-reverse">
+        <button class="justify-content-end btn btn-sm btn-new-show-user my-3 me-3" (click)="showUserById()">Show User</button>
+        <button class="justify-content-end btn btn-sm btn-new-show-user my-3 me-3" (click)="mostrarFormularioCrear()">New User</button>
       </div>
     </div>
-    <div *ngIf="flagCrearUsuario" class="form-bg-color px-3">
+    <div *ngIf="flagMostrarUsuario">
+      <form>
+        <div class="mb-3">
+          <label for="userId" class="form-label">User ID</label>
+          <input type="text" class="form-control" id="userId" [(ngModel)]="userIdToDisplay">
+        </div>
+      </form>
+    </div>
+    <div *ngIf="flagCrearUsuario" class="px-3">
       <form [formGroup]="userForm" (ngSubmit)="crearUsuario()">
         <div class="mb-3">
           <label for="firstName" class="form-label pt-3">Name</label>
@@ -30,13 +39,13 @@
           <label for="location" class="form-label">Location</label>
           <input type="text" formControlName="location" class="form-control" id="location">
         </div>
-        <button type="submit" class="btn btn-submit-edit me-3 mt-2 mb-4">Submit</button>
-        <button type="button" class="btn btn-cancel-delete mt-2 mb-4" (click)="cancelarCreacion()">Cancel</button>
+        <button type="submit" class="btn btn-sm btn-submit-edit me-2 mt-2 mb-4">Submit</button>
+        <button type="button" class="btn btn-sm btn-cancel-delete mt-2 mb-4" (click)="cancelarCreacion()">Cancel</button>
       </form>
     </div>
-    
+
     <div class="table-responsive">
-      <table class="table table-success table-striped">
+      <table class="table table-success table-striped table-hover">
         <!-- Encabezados de la tabla -->
         <thead>
           <tr>
@@ -58,8 +67,10 @@
             <td>{{ user.phone }}</td>
             <td>{{ user.location }}</td>
             <td>
-              <button class="btn btn-sm btn-submit-edit me-2 mb-lg-0 mb-md-2" (click)="openEditModal(user)">Edit</button>
-              <button class="btn btn-sm btn-cancel-delete" (click)="deleteUser(user?.id)">Delete</button>
+              <div class="d-flex flex-row">
+                <button class="btn btn-sm btn-submit-edit me-2 mb-lg-0 mb-md-2" (click)="openEditModal(user)">Edit</button>
+                <button class="btn btn-sm btn-cancel-delete" (click)="deleteUser(user?.id)">Delete</button>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -67,16 +78,16 @@
     </div>
     <div class="bg-footer-table">
       <!-- Botón para cargar más usuarios -->
-    <button class="btn btn-showMore btn-sm ms-3" (click)="loadMore()">Show More</button>
+    <button class="btn btn-showMore btn-sm ms-4" (click)="loadMore()">Show More</button>
     </div>
-    
+
 </div>
 
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" (click)="openEditModal()">
   Launch demo modal
 </button> -->
-  
+
   <!-- Modal -->
   <div class="modal" tabindex="-1" [class.show]="isModalVisible">
     <div class="modal-dialog">
