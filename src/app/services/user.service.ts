@@ -20,8 +20,12 @@ export class UserService {
         .set('_limit', usersPerPage.toString())
     });
   }
-  
 
+  getUserById(userId: number): Observable<User> {
+    const url = `${this.apiUrl}/users/${userId}`; // Ajusta la URL según tu API
+    return this.http.get<User>(url);
+  }
+  
   addUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
   }

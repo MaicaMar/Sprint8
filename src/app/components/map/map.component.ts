@@ -16,7 +16,7 @@ import mapboxgl from 'mapbox-gl';
 export class MapComponent implements OnInit {
   locations: Location[] = [];
 
-  constructor(private locationService: LocationService, private http: HttpClient) { }
+  constructor(private locationService: LocationService, private http: HttpClient) {}
 
   ngOnInit(): void {
     // Crear el mapa usando la función de ayuda (helpers/map-helper.ts)
@@ -70,7 +70,7 @@ export class MapComponent implements OnInit {
           .addTo(map);
       }
     });
-  }
+}
 
   
 }

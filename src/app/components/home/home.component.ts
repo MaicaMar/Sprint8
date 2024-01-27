@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit {
   userForm: FormGroup;
 
   flagMostrarUsuario: boolean = false;
+  // userIdToDisplay: FormControl;
+  displayedUser: User | null = null; // Variable para almacenar la información del usuario
 
 
   constructor(private userService: UserService, private modalService: NgbModal) {
@@ -35,7 +37,7 @@ export class HomeComponent implements OnInit {
       email: new FormControl(''),
       phone: new FormControl(''),
       location: new FormControl(''),
-      hobby: new FormControl('')
+      userIdToDisplay: new FormControl('') // Inicializa aquí
     });
   }
 
@@ -44,7 +46,7 @@ export class HomeComponent implements OnInit {
     this.loadUsers();
   }
 
-  // Descargar y descaragar más usuarios
+  // DESCARGAR Y DESCARGAR MÁS USUARIOS
   loadUsers(): void {
     this.userService.getUsers(this.currentPage, this.usersPerPage)
       .subscribe(users => {
@@ -85,7 +87,48 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // Editar usuario
+  //BUSCAR Y MOSTRAR UN USUARIO CONCRETO INGRESANDO SU ID
+  mostrarFormularioBuscarId() {
+    this.flagMostrarUsuario = true;
+  }
+
+  showUserById(): void {
+    if (!this.userForm) {
+      console.error('El formulario no está inicializado.');
+      return;
+    }
+  
+    const userIdControl = this.userForm.get('userIdToDisplay');
+  
+    if (!userIdControl) {
+      console.error('No se encontró el control userIdToDisplay en el formulario.');
+      return;
+    }
+  
+    const id = userIdControl.value;
+  
+    if (id === null || id === '') return;
+  
+    this.userService.getUserById(id).subscribe(
+      (user: User) => {
+        this.displayedUser = user;
+        this.flagMostrarUsuario = true;
+      },
+      (error) => {
+        console.error('Error al obtener usuario por ID:', error);
+        alert('Error al obtener usuario por ID.');
+      }
+    );
+  }
+  
+  cerrarUsuarioMostrado() {
+    this.flagMostrarUsuario = false;
+  }
+  
+
+
+
+  // EDITAR USUARIO (BOTÓN 'EDIT' DE LA COLUMNA ACTIONS DEL LISTADO)
 
   openEditModal(user: User): void {
     //this.currentUser = user;
@@ -104,7 +147,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  // Borrar usuario
+  // BORRAR USUARIO (BOTÓN 'DELETE' DE LA COLUMNA ACTIONS DEL LISTADO)
   deleteUser(id: number | undefined): void {
     if (id === undefined) return;
     this.userService.deleteUser(id).subscribe(() => {

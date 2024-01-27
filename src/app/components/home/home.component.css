@@ -1,3 +1,11 @@
+/* CONTAINER BACKGROUND COLOR */
+
+.container {
+    background-color: #C2DED1;
+    border-radius: 10px;
+}
+
+
 /* TABLE HEADER / DROPDOWN LIST */
 
 h2 {
@@ -8,6 +16,8 @@ h2 {
 .userList-header {
     background-color: #CDC2AE;
     border-bottom: solid 1px #354259;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .btn-new-show-user {
@@ -15,35 +25,40 @@ h2 {
     color: #CDC2AE;
 }
 
+.row.userList-header {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+.form-background-color {
+    background-color: #ECE5C7;
+    color:#354259;
+}
+
 
 /* TABLE LIST */
 
-tr th {
+thead tr th {
     font-weight:500;
-    padding-left: 25px;
     color: #354259;
     vertical-align: middle;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 32px;
+    padding-right: 0px;
 }
 
-tr td {
+tbody tr td {
     font-weight:200;
-    padding-left: 25px;
     color: #354259;
     vertical-align: middle;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 32px;
+    padding-right: 0px;
 }
 
 tr td button {
     vertical-align: middle;
 }
 
-.row.userList-header {
-  margin-right: 0;
-  margin-left: 0;
-}
+
 
 .btn {
     box-shadow: 1px 1px 2.5px 1px rgba(0, 0, 0, 0.3);
@@ -54,7 +69,7 @@ tr td button {
     color: #CDC2AE;
 }
 
-.btn-cancel-delete {
+.btn-cancel-delete-close {
     background-color: #A25772;
     color: #CDC2AE;
 }
@@ -65,6 +80,8 @@ tr td button {
 .bg-footer-table {
     background-color: #CDC2AE;
     border-top: solid 1px #354259;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .btn-showMore {

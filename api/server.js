@@ -26,7 +26,7 @@ db.connect((err) => {
 
 //CRUD Usuarios en el Home
 
-  // Endpoint per crear un usuari
+  // Endpoint para crear un usuario
   app.post('/users', (req, res) => {
     const { firstName, lastName, email, phone, location } = req.body;
     const sql = 'INSERT INTO users (firstName, lastName, email, phone, location) VALUES (?, ?, ?, ?, ?)';
@@ -53,6 +53,28 @@ db.connect((err) => {
       res.json(result);
     });
   });
+
+  // Endpoint para mostrar un usuario introduciendo su Id
+  app.get('/users/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = 'SELECT * FROM users WHERE id = ?';
+
+    db.query(sql, [id], (err, result) => {
+      if (err) {
+        // Manejo del error si la consulta falla
+        console.error(err);
+        res.status(500).send('Error al realizar la consulta');
+      } else {
+        // Verifica si se encontró algún usuario
+        if (result.length > 0) {
+          res.json(result[0]);
+        } else {
+          res.status(404).send('Usuario no encontrado');
+        }
+      }
+    });
+  });
+
   
   // Endpoint per actualitzar un usuari
   app.put('/users/:id', (req, res) => {
