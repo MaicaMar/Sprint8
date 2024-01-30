@@ -1,4 +1,13 @@
-.btn-update {
+.update-btn {
   background-color: #354259;
   color: #C2DED1;
+}
+
+h2 {
+  font-weight: 600;
+  color: #354259;
+}
+
+.charts-header {
+  border-bottom: solid 1px #354259;
 }

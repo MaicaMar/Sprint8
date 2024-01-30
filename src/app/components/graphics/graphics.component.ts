@@ -5,6 +5,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { BaseChartDirective } from 'ng2-charts';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { GraphicsService } from '../../services/graphics.service';
@@ -12,13 +13,15 @@ import { GraphicsService } from '../../services/graphics.service';
 @Component({
   selector: 'app-graphics',
   standalone: true,
-  imports: [ NgChartsModule ],
+  imports: [ NgChartsModule, CanvasJSAngularChartsModule ],
   templateUrl: './graphics.component.html',
   styleUrl: './graphics.component.css'
 })
 export class GraphicsComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
+
+// GRÁFICO DE BARRAS
   public barChartOptions: ChartConfiguration['options'] = {
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
@@ -43,8 +46,8 @@ export class GraphicsComponent {
   public barChartData: ChartData<'bar'> = {
     labels: [], // Inicialmente vacío, se llenará con datos del servicio
     datasets: [
-      { data: [], label: 'Series A' },
-      { data: [], label: 'Series B' },
+      { data: [], label: 'Series A', backgroundColor: '#198754' },
+      { data: [], label: 'Series B', backgroundColor: '#8fdf82' },
     ],
   };
 
@@ -120,4 +123,25 @@ export class GraphicsComponent {
 
     this.chart?.update();
   }
+
+
+  // GRÁFICO "DOUGHNUT"
+  doughnutChartOptions = {
+	  animationEnabled: true,
+	  /*title: {
+		text: "Ventas por departamento"
+	  },*/
+	  data: [{
+		type: "pie",
+		startAngle: -90,
+		indexLabel: "{name}: {y}",
+		yValueFormatString: "#,###.##'%'",
+		dataPoints: [
+		  { y: 14.1, name: "Toys" },
+		  { y: 28.2, name: "Electronics" },
+		  { y: 14.4, name: "Groceries" },
+		  { y: 43.3, name: "Furniture" }
+		]
+	  }]
+	}
 }
