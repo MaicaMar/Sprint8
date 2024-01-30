@@ -25,7 +25,7 @@ export class UserService {
     const url = `${this.apiUrl}/users/${userId}`; // Ajusta la URL según tu API
     return this.http.get<User>(url);
   }
-  
+
   addUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
   }

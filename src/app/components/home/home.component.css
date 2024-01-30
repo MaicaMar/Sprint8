@@ -1,92 +1,94 @@
 /* CONTAINER BACKGROUND COLOR */
 
 .container {
-    background-color: #C2DED1;
-    border-radius: 10px;
+  background-color: #C2DED1;
+  border-radius: 10px;
+  padding: auto;
 }
 
 
 /* TABLE HEADER / DROPDOWN LIST */
 
 h2 {
-    font-weight: 600;
-    color: #354259;
+  font-weight: 600;
+  color: #354259;
 }
 
 .userList-header {
-    background-color: #CDC2AE;
-    border-bottom: solid 1px #354259;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  background-color: #CDC2AE;
+  border-bottom: solid 1px #354259;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .btn-new-show-user {
-    background-color: #354259;
-    color: #CDC2AE;
+  background-color: #354259;
+  color: #CDC2AE;
 }
 
 .row.userList-header {
-    margin-right: 0;
-    margin-left: 0;
-  }
+  margin-right: 0;
+  margin-left: 0;
+}
 
 .form-background-color {
-    background-color: #ECE5C7;
-    color:#354259;
+  background-color: #ECE5C7;
+  color:#354259;
 }
 
 
 /* TABLE LIST */
 
 thead tr th {
-    font-weight:500;
-    color: #354259;
-    vertical-align: middle;
-    padding-left: 32px;
-    padding-right: 0px;
+  font-weight:500;
+  color: #354259;
+  vertical-align: middle;
+  padding-left: 32px;
+  padding-right: 0px;
 }
 
 tbody tr td {
-    font-weight:200;
-    color: #354259;
-    vertical-align: middle;
-    padding-left: 32px;
-    padding-right: 0px;
+  font-weight:200;
+  color: #354259;
+  vertical-align: middle;
+  padding-left: 32px;
+  padding-right: 0px;
 }
 
 tr td button {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 
 
 .btn {
-    box-shadow: 1px 1px 2.5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 2.5px 1px rgba(0, 0, 0, 0.3);
 }
 
 .btn-submit-edit {
-    background-color: #354259;
-    color: #CDC2AE;
+  background-color: #354259;
+  color: #CDC2AE;
 }
 
 .btn-cancel-delete-close {
-    background-color: #A25772;
-    color: #CDC2AE;
+  background-color: #A25772;
+  color: #CDC2AE;
+  margin-right: 32px;
 }
 
 
 
 /* TABLE FOOTER */
 .bg-footer-table {
-    background-color: #CDC2AE;
-    border-top: solid 1px #354259;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+  background-color: #CDC2AE;
+  border-top: solid 1px #354259;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .btn-showMore {
-    background-color: #354259;
-    color: #CDC2AE;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  background-color: #354259;
+  color: #CDC2AE;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

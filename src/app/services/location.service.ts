@@ -13,18 +13,19 @@ export class LocationService {
 
   constructor(private http: HttpClient) { }
 
-  // Obtener todas las ubicaciones
-  getLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>(`${API_URL}/locations`);
+  saveLocation(location: Location) {
+    const url = `${API_URL}/locations`; // Ajusta la URL según tu backend
+    return this.http.post(url, location);
   }
 
-  // Agregar una nueva ubicación
-  addLocation(locationData: { name: string; latitude: number; longitude: number }): Observable<Location> {
-    return this.http.post<Location>(`${API_URL}/locations`, locationData);
-}
+  getAllLocations(): Observable<Location[]> {
+    const url = `${API_URL}/locations`; // Ajusta la URL según tu backend
+    return this.http.get<Location[]>(url);
+  }
 
-    // // Agregar una nueva ubicación
-    // addLocation(locationData: { name: string; latitude: number; longitude: number }): Observable<Location> {
-    //   return this.http.post<Location>(`${API_URL}/locations`, locationData);
-    // }
+  deleteLocation(id: number): Observable<any> {
+    const url = `${API_URL}/locations/${id}`;
+    return this.http.delete(url);
+  }
+
 }

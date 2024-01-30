@@ -43,7 +43,7 @@ db.connect((err) => {
     const page = parseInt(req.query._page) || 1;  // Página actual, asegurándose de que es un número
     const limit = parseInt(req.query._limit) || 5;  // Cantidad de usuarios por página, asegurándose de que es un número
     const start = (page - 1) * limit;  // Calcula el índice de inicio para la paginación
-  
+
     const sql = 'SELECT * FROM users LIMIT ?, ?';
     db.query(sql, [start, limit], (err, result) => {
       if (err) {
@@ -75,7 +75,7 @@ db.connect((err) => {
     });
   });
 
-  
+
   // Endpoint per actualitzar un usuari
   app.put('/users/:id', (req, res) => {
     const { id } = req.params;
@@ -90,7 +90,7 @@ db.connect((err) => {
       }
     });
   });
-  
+
   // Endpoint per eliminar un usuari
   app.delete('/users/:id', (req, res) => {
     const { id } = req.params;
@@ -123,6 +123,22 @@ db.connect((err) => {
         res.json(result);
     });
   });
+
+  // Endpoint para eliminar una ubicación por ID
+app.delete('/locations/:id', (req, res) => {
+  const locationId = req.params.id;
+  const sql = 'DELETE FROM locations WHERE id = ?';
+  db.query(sql, [locationId], (err, result) => {
+      if (err) {
+          console.error('Error al eliminar la ubicación:', err);
+          res.status(500).json({ error: 'Error interno al eliminar la ubicación' });
+      } else {
+          res.header("Content-Type", "application/json");
+          res.json({ message: 'Ubicación eliminada correctamente' });
+      }
+  });
+});
+
 
 
 // FULL-CALENDAR

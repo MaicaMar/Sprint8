@@ -97,18 +97,18 @@ export class HomeComponent implements OnInit {
       console.error('El formulario no está inicializado.');
       return;
     }
-  
+
     const userIdControl = this.userForm.get('userIdToDisplay');
-  
+
     if (!userIdControl) {
       console.error('No se encontró el control userIdToDisplay en el formulario.');
       return;
     }
-  
+
     const id = userIdControl.value;
-  
+
     if (id === null || id === '') return;
-  
+
     this.userService.getUserById(id).subscribe(
       (user: User) => {
         this.displayedUser = user;
@@ -120,11 +120,11 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  
+
   cerrarUsuarioMostrado() {
     this.flagMostrarUsuario = false;
   }
-  
+
 
 
 

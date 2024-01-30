@@ -1,128 +1,128 @@
 <!-- home.component.html -->
 <div class="container mt-5 px-0">
-    <div class="row userList-header align-items-center">
-      <div class="col d-flex flex-row">
-        <h2 class="ps-3 pt-2">User List</h2>
-      </div>
-      <div class="col d-flex flex-row-reverse">
-        <button class="justify-content-end btn btn-sm btn-new-show-user my-3 me-3" (click)="mostrarFormularioBuscarId()">Show User</button>
-        <button class="justify-content-end btn btn-sm btn-new-show-user my-3 me-2" (click)="mostrarFormularioCrear()">New User</button>
-      </div>
+  <div class="row userList-header align-items-center">
+    <div class="col d-flex flex-row">
+      <h2 class="ps-3 pt-2">User List</h2>
     </div>
-    <div *ngIf="flagMostrarUsuario" class="row align-items-center justify-content-center">
-      <div class="col-6 col-lg-3">
-        <form [formGroup]="userForm" (ngSubmit)="showUserById()">
-          <div class="d-flex flex-md-row align-items-center my-3">
-            <label for="userId" class="form-label text-nowrap mb-0">User ID </label>
-            <input type="text" class="form-control ms-2" id="userId" formControlName="userIdToDisplay">
-          </div>
-        </form>
-      </div>
+    <div class="col d-flex flex-row-reverse">
+      <button class="justify-content-end btn btn-sm btn-new-show-user my-3 me-3" (click)="mostrarFormularioBuscarId()">Show User</button>
+      <button class="justify-content-end btn btn-sm btn-new-show-user my-3 me-2" (click)="mostrarFormularioCrear()">New User</button>
     </div>
-      <!-- Campos donde se mostrará la información del usuario -->
-    <div *ngIf="displayedUser" class="row flex-column text-start">
-      <div class="row">
-        <div class="col d-flex flex-column align-items-center justify-content-center">
-          <p><strong>ID:</strong> {{ displayedUser.id }}</p>
-          <p><strong>First Name:</strong> {{ displayedUser.firstName }}</p>
-          <p><strong>Last Name:</strong> {{ displayedUser.lastName }}</p>
-          <p><strong>Email:</strong> {{ displayedUser.email }}</p>
-          <p><strong>Phone:</strong> {{ displayedUser.phone }}</p>
-          <p><strong>Location:</strong> {{ displayedUser.location }}</p>
+  </div>
+  <div *ngIf="flagMostrarUsuario" class="row align-items-center justify-content-center">
+    <div class="col-6 col-lg-3">
+      <form [formGroup]="userForm" (ngSubmit)="showUserById()">
+        <div class="d-flex flex-md-row align-items-center my-3">
+          <label for="userId" class="form-label text-nowrap mb-0">User ID </label>
+          <input type="text" class="form-control ms-2" id="userId" formControlName="userIdToDisplay">
         </div>
-      </div>
-      <div class="row">
-        <div class="col d-flex align-items-center justify-content-center">
-          <button type="button" class="btn btn-sm btn-cancel-delete-close mt-2 mb-4" (click)="cerrarUsuarioMostrado()">Close</button>
-        </div>
-      </div>
-    </div>
-    
-    <div *ngIf="flagCrearUsuario" class="form-background-color">
-      <form [formGroup]="userForm" (ngSubmit)="crearUsuario()" class="mx-4">
-        <div class="mb-3">
-          <label for="firstName" class="form-label pt-3">Name</label>
-          <input type="text" formControlName="firstName" class="form-control" id="firstName">
-        </div>
-        <div class="mb-3">
-          <label for="lastName" class="form-label">Last Name</label>
-          <input type="text" formControlName="lastName" class="form-control" id="lastName">
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" formControlName="email" class="form-control" id="email">
-        </div>
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone Number</label>
-          <input type="text" formControlName="phone" class="form-control" id="phone">
-        </div>
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input type="text" formControlName="location" class="form-control" id="location">
-        </div>
-        <button type="submit" class="btn btn-sm btn-submit-edit me-2 mt-2 mb-4">Submit</button>
-        <button type="button" class="btn btn-sm btn-cancel-delete-close mt-2 mb-4" (click)="cancelarCreacion()">Cancel</button>
       </form>
     </div>
+  </div>
+    <!-- Campos donde se mostrará la información del usuario -->
+  <div *ngIf="displayedUser" class="row flex-column text-start">
+    <div class="row">
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <p><strong>ID:</strong> {{ displayedUser.id }}</p>
+        <p><strong>First Name:</strong> {{ displayedUser.firstName }}</p>
+        <p><strong>Last Name:</strong> {{ displayedUser.lastName }}</p>
+        <p><strong>Email:</strong> {{ displayedUser.email }}</p>
+        <p><strong>Phone:</strong> {{ displayedUser.phone }}</p>
+        <p><strong>Location:</strong> {{ displayedUser.location }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex align-items-center justify-content-center">
+        <button type="button" class="btn btn-sm btn-cancel-delete-close mt-2 mb-4" (click)="cerrarUsuarioMostrado()">Close</button>
+      </div>
+    </div>
+  </div>
 
-    <div class="table-responsive">
-      <table class="table table-success table-striped table-hover">
-        <!-- Encabezados de la tabla -->
-        <thead>
-          <tr>
-            <th class="">ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Location</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td class="">{{ user.id }}</td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
-            <td>{{ user.location }}</td>
-            <td>
-              <div class="d-flex flex-row">
-                <button class="btn btn-sm btn-submit-edit me-2" (click)="openEditModal(user)">Edit</button>
-                <button class="btn btn-sm btn-cancel-delete-close" (click)="deleteUser(user?.id)">Delete</button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="bg-footer-table">
-      <!-- Botón para cargar más usuarios -->
-    <button class="btn btn-showMore btn-sm ms-4 my-3" (click)="loadMore()">Show More</button>
-    </div>
+  <div *ngIf="flagCrearUsuario" class="form-background-color">
+    <form [formGroup]="userForm" (ngSubmit)="crearUsuario()" class="mx-4">
+      <div class="mb-3">
+        <label for="firstName" class="form-label pt-3">Name</label>
+        <input type="text" formControlName="firstName" class="form-control" id="firstName">
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control" id="lastName">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" formControlName="email" class="form-control" id="email">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="text" formControlName="phone" class="form-control" id="phone">
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" formControlName="location" class="form-control" id="location">
+      </div>
+      <button type="submit" class="btn btn-sm btn-submit-edit me-2 mt-2 mb-4">Submit</button>
+      <button type="button" class="btn btn-sm btn-cancel-delete-close mt-2 mb-4" (click)="cancelarCreacion()">Cancel</button>
+    </form>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-success table-striped table-hover">
+      <!-- Encabezados de la tabla -->
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Location</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="">{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.location }}</td>
+          <td>
+            <div class="d-flex flex-row">
+              <button class="btn btn-sm btn-submit-edit me-2" (click)="openEditModal(user)">Edit</button>
+              <button class="btn btn-sm btn-cancel-delete-close" (click)="deleteUser(user?.id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="bg-footer-table">
+    <!-- Botón para cargar más usuarios -->
+  <button class="btn btn-showMore btn-sm ms-4 my-3" (click)="loadMore()">Show More</button>
+  </div>
 
 </div>
 
 <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" (click)="openEditModal()">
-  Launch demo modal
+Launch demo modal
 </button> -->
 
-  <!-- Modal -->
-  <div class="modal" tabindex="-1" [class.show]="isModalVisible">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5">Modal title</h1>
-          <button type="button" class="btn-close" (click)="isModalVisible = false"></button>
-        </div>
-        <div class="modal-body">
-          <!-- <app-edit-user-modal (userUpdated)="handleUserUpdate($event)"></app-edit-user-modal> -->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="isModalVisible = false">Close</button>
-        </div>
+<!-- Modal -->
+<div class="modal" tabindex="-1" [class.show]="isModalVisible">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Modal title</h1>
+        <button type="button" class="btn-close" (click)="isModalVisible = false"></button>
+      </div>
+      <div class="modal-body">
+        <!-- <app-edit-user-modal (userUpdated)="handleUserUpdate($event)"></app-edit-user-modal> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="isModalVisible = false">Close</button>
       </div>
     </div>
   </div>
+</div>

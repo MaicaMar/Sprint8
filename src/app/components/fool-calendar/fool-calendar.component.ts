@@ -21,11 +21,11 @@ import { EventsService } from '../../services/events.service';
 export class FoolCalendarComponent implements OnInit {
 
   constructor() { }
-  
+
   private eventsService = inject(EventsService);
   public events: CalendarEvent[] = [];
   public calendar?: Calendar;
-  
+
   ngOnInit() {
     this.eventsService.getEvents().subscribe({
       next: (data) => {
@@ -66,6 +66,6 @@ export class FoolCalendarComponent implements OnInit {
       }))
     };
   }
-  
-    
+
+
 }
