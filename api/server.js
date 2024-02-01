@@ -193,6 +193,34 @@ app.put('/graphics_barchart/:id', (req, res) => {
   });
 });
 
+// Endpoint para obtener un dato en 'graphics_piechart' por ID
+app.get('/graphics_piechart/:id', (req, res) => {
+  const { id } = req.params;
+  const sql = 'SELECT * FROM graphics_piechart WHERE id = ?';
+
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error al obtener el dato');
+    } else {
+      if (result.length === 0) {
+        res.status(404).send('Dato no encontrado');
+      } else {
+        const data = result[0];
+        res.json({
+          id: data.id,
+          month: data.month,
+          toys: data.toys,
+          electronics: data.electronics,
+          groceries: data.groceries,
+          furniture: data.furniture
+        });
+      }
+    }
+  });
+});
+
+
 
 // Iniciar servidor
 const port = 3000;
