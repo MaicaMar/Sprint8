@@ -27,7 +27,7 @@ export class GraphicsService {
     return this.http.get<any>(`${this.apiUrl}/graphics_piechart/${id}`);
   }
 
-  
+
 
   // // Obtener todos los datos de 'graphics_piechart'
   // getPieChartData(): Observable<any[]> {

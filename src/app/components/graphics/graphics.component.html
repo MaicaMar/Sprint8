@@ -1,48 +1,51 @@
 <div class="container px-0">
 
-    <!-- GRÁFICO DE BARRAS -->
-    <div class="row charts-header align-items-center px-0 mx-0 my-5">
-      <div class="col d-flex flex-row">
-        <h2 class="ps-2 pt-1">Gráfico de Barras</h2>
-      </div>
-      <div class="col d-flex flex-row-reverse">
-        <button class="btn btn-sm update-btn flex-row-reverse" (click)="randomize()">Update</button>
-      </div>
+  <!-- GRÁFICO DE BARRAS -->
+  <div class="row charts-header align-items-center px-0 mx-0 my-5">
+    <div class="col d-flex flex-row">
+      <h2 class="ps-2 pt-1">Gráfico de Barras</h2>
     </div>
+    <div class="col d-flex flex-row-reverse">
+      <button class="btn btn-sm update-btn flex-row-reverse" (click)="randomize()">Update</button>
+    </div>
+  </div>
 
 
-    <div class="row">
-        <canvas
-          baseChart
-          class="chart"
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [type]="barChartType"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"
-        >
-        </canvas>
-    </div>
+  <div class="row">
+      <canvas
+        baseChart
+        class="chart"
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [type]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      >
+      </canvas>
+  </div>
 
 
-    <!-- GRÁFICO PIE -->
-    <div class="row charts-header align-items-center px-0 mx-0 my-5">
-      <div class="col d-flex flex-row">
-        <h2 class="ps-2 pt-1">Gráfico Circular</h2>
-      </div>
-      <div class="col d-flex flex-row-reverse">
-        <button (click)="monthForward()" class="btn btn-sm update-btn">►</button>
-          <span class="mx-2 pt-1"> {{ months[currentMonthIndex] }} </span>
-        <button (click)="monthBackward()" class="btn btn-sm update-btn">◄</button>
-      </div>
+  <!-- GRÁFICO PIE -->
+  <div class="row charts-header align-items-center px-0 mx-0 my-5">
+    <div class="col d-flex flex-row">
+      <h2 class="ps-2 pt-1">Gráfico Circular</h2>
     </div>
-    <div class="row">
-      <div class="col">
-        <canvasjs-chart [options]="pieChartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
-      </div>
+    <div class="col d-flex flex-row-reverse">
+      <button (click)="monthForward()" class="btn btn-sm update-btn">►</button>
+        <span class="mx-2 pt-1"> {{ months[currentMonthIndex] }} </span>
+      <button (click)="monthBackward()" class="btn btn-sm update-btn">◄</button>
     </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <canvasjs-chart [options]="pieChartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+    </div>
+  </div>
 
 
 </div>
+
+
+
 

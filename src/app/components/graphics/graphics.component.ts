@@ -183,7 +183,7 @@ export class GraphicsComponent {
       }
     );
   }
-  
+
   monthForward() {
     this.currentMonthIndex = (this.currentMonthIndex +1) % this.months.length;
     console.log('Mes avanzado. Nuevo índice:', this.currentMonthIndex);
