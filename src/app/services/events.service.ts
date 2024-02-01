@@ -13,7 +13,7 @@ export class EventsService {
 
   constructor(private http: HttpClient) { }
 
-  // En EventsService, si es necesario modificar el formato
+
   getEvents(): Observable<CalendarEvent[]> {
     return this.http.get<{ start: string; end: string; id?: number; title: string; color: string }[]>(`${API_URL}/events`).pipe(
       map(events => events.map(event => ({
@@ -21,11 +21,5 @@ export class EventsService {
       })))
     );
   }
-  
-
-
-  // getEvents(): Observable<CalendarEvent[]> {
-  //   return this.http.get<CalendarEvent[]>(`${API_URL}/events`);
-  // }
 
 }

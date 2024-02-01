@@ -4,7 +4,7 @@ import { MapComponent } from './components/map/map.component';
 import { FoolCalendarComponent } from './components/fool-calendar/fool-calendar.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditUserModalComponent } from './components/home/edit-user-modal/edit-user-modal.component';
-//import { MapsComponent } from './components/maps/maps.component';
+
 
 export const routes: Routes = [
     {

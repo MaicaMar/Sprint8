@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
       (response) => {
         console.log('Usuario creado:', response);
         alert('Usuario creado con éxito.');
-        // Aquí restableces el formulario
+        // Aquí se restablece el formulario
         this.userForm.reset();
         this.flagCrearUsuario = false;
       },
@@ -131,7 +131,6 @@ export class HomeComponent implements OnInit {
   // EDITAR USUARIO (BOTÓN 'EDIT' DE LA COLUMNA ACTIONS DEL LISTADO)
 
   openEditModal(user: User): void {
-    //this.currentUser = user;
     const modalRef = this.modalService.open(EditUserModalComponent);
     modalRef.componentInstance.user = user;
 
@@ -142,7 +141,6 @@ export class HomeComponent implements OnInit {
   }
 
   handleUserUpdate(updatedUser: User): void {
-    // Aquí puedes manejar la actualización del usuario en tu lista o cualquier otra lógica necesaria
     console.log('Usuario actualizado en HomeComponent:', updatedUser);
   }
 

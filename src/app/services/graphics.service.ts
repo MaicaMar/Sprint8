@@ -26,16 +26,4 @@ export class GraphicsService {
   getPieChartDataById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/graphics_piechart/${id}`);
   }
-
-
-
-  // // Obtener todos los datos de 'graphics_piechart'
-  // getPieChartData(): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.apiUrl}/graphics_piechart`);
-  // }
-
-  // // Actualizar un dato en 'graphics_piechart' por ID
-  // updatePieChartData(id: number, data: any): Observable<any> {
-  //   return this.http.put(`${this.apiUrl}/graphics_piechart/${id}`, data);
-  // }
 }

@@ -1,4 +1,3 @@
-// map-helper.ts
 import * as mapboxgl from 'mapbox-gl';
 import { Location } from '../../../interfaces/location.interface';
 import { environment } from '../../../../environments/environment';
@@ -23,8 +22,6 @@ export function addMarker(map: mapboxgl.Map, onMarkerAdded: (location: Omit<Loca
     map.on('contextmenu', (e) => {
         // Captura las coordenadas del clic derecho
         const lngLat = e.lngLat;
-
-        // Aquí puedes abrir un modal o crear tu propio menú contextual para ingresar el nombre de la ubicación
         const locationName = prompt('Indica el nombre de esta ubicación');
 
         if (locationName) {

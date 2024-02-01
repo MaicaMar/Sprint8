@@ -22,7 +22,7 @@ export class UserService {
   }
 
   getUserById(userId: number): Observable<User> {
-    const url = `${this.apiUrl}/users/${userId}`; // Ajusta la URL según tu API
+    const url = `${this.apiUrl}/users/${userId}`;
     return this.http.get<User>(url);
   }
 

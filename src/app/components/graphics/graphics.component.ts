@@ -55,7 +55,6 @@ export class GraphicsComponent {
 
 
 
-
 // PROPIEDADES PIE CHART
   months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   currentMonthIndex: number = 0;
@@ -76,9 +75,6 @@ export class GraphicsComponent {
 
 
 
-
-
-
 // CONSTRUCTOR Y ONINIT
   constructor(private graphicsService: GraphicsService) {}
 
@@ -90,7 +86,6 @@ export class GraphicsComponent {
 
 
 
-
   // FUNCIONES BAR CHART
 
   loadBarChartData(): void {
@@ -99,7 +94,6 @@ export class GraphicsComponent {
       this.barChartData.labels = data.map((entry: any) => entry.year);
       this.barChartData.datasets[0].data = data.map((entry: any) => entry.series_a);
       this.barChartData.datasets[1].data = data.map((entry: any) => entry.series_b);
-
       // Actualiza el gráfico
       this.chart?.update();
     });
@@ -107,8 +101,7 @@ export class GraphicsComponent {
 
   // Función para actualizar datos (llama al servicio)
   updateBarChart(): void {
-    // Asegúrate de tener el ID correcto y los datos a actualizar
-    const idToUpdate = 1; // Reemplaza con el ID adecuado
+    const idToUpdate = 1;
     const newData = { year: '2022', series_a: 50, series_b: 60 }; // Reemplaza con tus datos
     this.graphicsService.updateBarChartData(idToUpdate, newData).subscribe(() => {
       // Luego de la actualización, actualiza los datos del gráfico
@@ -158,7 +151,6 @@ export class GraphicsComponent {
 
     this.chart?.update();
   }
-
 
 
 
