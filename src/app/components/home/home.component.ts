@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
   // CREAR USUARIO
   mostrarFormularioCrear(): void {
     this.flagCrearUsuario = true;
+    this.flagMostrarUsuario = false; // Ocultar el otro formulario al mostrar este
   }
 
   crearUsuario(): void {
@@ -89,6 +90,7 @@ export class HomeComponent implements OnInit {
 
   //BUSCAR Y MOSTRAR UN USUARIO CONCRETO INGRESANDO SU ID
   mostrarFormularioBuscarId() {
+    this.flagCrearUsuario = false; // Ocultar el formulario de creación
     this.flagMostrarUsuario = true;
   }
 
@@ -122,9 +124,9 @@ export class HomeComponent implements OnInit {
   }
 
   cerrarUsuarioMostrado() {
-    // Restablece el formulario
-    this.userForm.reset();
     this.flagMostrarUsuario = false;
+    this.displayedUser = null; // Limpiar la información del usuario mostrado
+    this.userForm.reset(); // Restablecer el formulario
   }
 
 
