@@ -11,16 +11,17 @@
   </div>
   <div *ngIf="flagMostrarUsuario" class="row align-items-center justify-content-center">
     <div class="col-6 col-lg-3">
-      <form [formGroup]="userForm" (ngSubmit)="showUserById()">
+      <form [formGroup]="userForm">
         <div class="d-flex flex-md-row align-items-center my-3">
           <label for="userId" class="form-label text-nowrap mb-0">User ID </label>
           <input type="text" class="form-control ms-2" id="userId" formControlName="userIdToDisplay">
+          <button type="button" class="btn btn-sm btn-send-user-id ms-2" (click)="showUserById()">Send</button>
         </div>
       </form>
     </div>
   </div>
     <!-- Campos donde se mostrará la información del usuario -->
-  <div *ngIf="displayedUser" class="row flex-column text-start">
+  <div *ngIf="displayedUser" class="row flex-column">
     <div class="row">
       <div class="col d-flex flex-column align-items-center justify-content-center">
         <p><strong>ID:</strong> {{ displayedUser.id }}</p>
@@ -33,7 +34,7 @@
     </div>
     <div class="row">
       <div class="col d-flex align-items-center justify-content-center">
-        <button type="button" class="btn btn-sm btn-cancel-delete-close mt-2 mb-4" (click)="cerrarUsuarioMostrado()">Close</button>
+        <button type="button" class="btn btn-sm btn-cancel-delete-close mt-2 mb-4 mx-auto" (click)="cerrarUsuarioMostrado()">Close</button>
       </div>
     </div>
   </div>

@@ -122,6 +122,8 @@ export class HomeComponent implements OnInit {
   }
 
   cerrarUsuarioMostrado() {
+    // Restablece el formulario
+    this.userForm.reset();
     this.flagMostrarUsuario = false;
   }
 

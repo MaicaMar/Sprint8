@@ -65,6 +65,11 @@ tr td button {
   box-shadow: 1px 1px 2.5px 1px rgba(0, 0, 0, 0.3);
 }
 
+.btn-send-user-id {
+  background-color: #354259;
+  color: #C2DED1;
+}
+
 .btn-submit-edit {
   background-color: #354259;
   color: #CDC2AE;
