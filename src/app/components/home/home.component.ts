@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit {
   mostrarFormularioCrear(): void {
     this.flagCrearUsuario = true;
     this.flagMostrarUsuario = false; // Ocultar el otro formulario al mostrar este
+    this.displayedUser = null; // Limpiar la información del usuario mostrado
   }
 
   crearUsuario(): void {
