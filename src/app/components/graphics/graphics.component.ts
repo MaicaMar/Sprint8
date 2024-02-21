@@ -1,16 +1,15 @@
 // https://github.com/valor-software/ng2-charts/blob/master/apps/ng2-charts-demo/src/app/bar-chart/bar-chart.component.html
 // https://www.chartjs.org/docs/latest/
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType, ChartOptions } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { BaseChartDirective } from 'ng2-charts';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
-import { switchMap } from 'rxjs/operators';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { GraphicsService } from '../../services/graphics.service';
-import { PieChartData } from '../../interfaces/pie-chart-data.interface';
+
 
 @Component({
   selector: 'app-graphics',
@@ -20,7 +19,7 @@ import { PieChartData } from '../../interfaces/pie-chart-data.interface';
   styleUrl: './graphics.component.css'
 })
 export class GraphicsComponent {
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+@ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
 
 // PROPIEDADES BAR CHART
@@ -54,27 +53,6 @@ export class GraphicsComponent {
   };
 
 
-
-// PROPIEDADES PIE CHART
-  months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  currentMonthIndex: number = 0;
-
-  pieChartOptions = {
-	  animationEnabled: true,
-	  /*title: {
-		text: "Sales by Department"
-	  },*/
-	  data: [{
-      type: "pie",
-      startAngle: -90,
-      indexLabel: "{name}: {y}",
-      yValueFormatString: "#,###.##'%'",
-      dataPoints: [] as { y: number; name: string; }[]  // Inicializado como un array tipado
-	  }]
-	}
-
-
-
 // CONSTRUCTOR Y ONINIT
   constructor(private graphicsService: GraphicsService) {}
 
@@ -83,7 +61,6 @@ export class GraphicsComponent {
     this.loadBarChartData();
     this.loadPieChartData();
   }
-
 
 
   // FUNCIONES BAR CHART
@@ -154,36 +131,63 @@ export class GraphicsComponent {
 
 
 
+// PROPIEDADES PIE CHART
+months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+currentMonthIndex: number = 1;
+dataPoints : { y: number; name: string }[] = [];
+chart2: any;
+
+getChartInstance(chart: object) {
+  this.chart2 = chart;
+}
+
+pieChartOptions = {
+  animationEnabled: true,
+  title: {
+  text: "Sales by Department 2023",
+  fontFamily: "Rubik",
+  fontSize: 25,
+  fontColor: "#354259",
+  margin: 25,
+  },
+  data: [{
+    type: "pie",
+    startAngle: -90,
+    indexLabel: "{name}: {y}",
+    yValueFormatString: "#,###.##'%'",
+    dataPoints: this.dataPoints  // Inicializado como un array tipado
+  }]
+}
+
   // FUNCIONES PIE CHART
   loadPieChartData() {
     console.log('Cargando datos del backend...');
-    const currentMonthId = this.currentMonthIndex + 1; // Asumiendo que los IDs comienzan desde 1
 
-    this.graphicsService.getPieChartDataById(currentMonthId).subscribe(
-      (data: any) => {
+    this.graphicsService.getPieChartDataById(this.currentMonthIndex).subscribe({
+      next: (data: any) => {
+        console.log(this.currentMonthIndex, data);
         this.pieChartOptions.data[0].dataPoints = [
           { y: data.toys, name: "Toys" },
           { y: data.electronics, name: "Electronics" },
           { y: data.groceries, name: "Groceries" },
           { y: data.furniture, name: "Furniture" }
         ];
-        // Actualiza la referencia del gráfico para forzar la actualización
-        this.pieChartOptions = { ...this.pieChartOptions };
+       this.chart2.render();
       },
-      error => {
-        console.error('Error cargando datos del backend:', error);
-      }
-    );
+      error: (error: any) => console.error('Error cargando datos del backend:', error),
+      complete: () => console.log('FIN')
+    });
+
   }
 
   monthForward() {
-    this.currentMonthIndex = (this.currentMonthIndex +1) % this.months.length;
+    this.currentMonthIndex = this.currentMonthIndex + 1;
     console.log('Mes avanzado. Nuevo índice:', this.currentMonthIndex);
     this.loadPieChartData();
   }
 
   monthBackward() {
-    this.currentMonthIndex = (this.currentMonthIndex - 1 + this.months.length) % this.months.length;
+    this.currentMonthIndex = this.currentMonthIndex - 1;
     console.log('Mes retrocedido. Nuevo índice:', this.currentMonthIndex);
     this.loadPieChartData();
   }

@@ -33,19 +33,15 @@
     </div>
     <div class="col d-flex flex-row-reverse">
       <button (click)="monthForward()" class="btn btn-sm update-btn">►</button>
-        <span class="mx-2 pt-1"> {{ months[currentMonthIndex] }} </span>
+        <span class="mx-2 pt-1"> {{ months[currentMonthIndex-1] }} </span>
       <button (click)="monthBackward()" class="btn btn-sm update-btn">◄</button>
     </div>
+
   </div>
   <div class="row">
     <div class="col">
-      <canvasjs-chart [options]="pieChartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+      <canvasjs-chart (chartInstance)="getChartInstance($event)" [options]="pieChartOptions" [styles]="{width: '100%', height:'360px'}" class="pie-chart-fonts"></canvasjs-chart>
     </div>
   </div>
 
-
 </div>
-
-
-
-

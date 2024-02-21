@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { Calendar, CalendarOptions, EventClickArg, EventInput } from '@fullcalendar/core';
+import { Calendar, CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
@@ -40,7 +40,7 @@ export class FoolCalendarComponent implements OnInit {
     initialView: 'dayGridMonth',
     editable: true,
     themeSystem: 'bootstrap5',
-    plugins: [dayGridPlugin, timeGridPlugin, bootstrap5Plugin],
+    plugins: [ dayGridPlugin, timeGridPlugin, bootstrap5Plugin],
     droppable: true,
     events: [
       { title: 'Evento 111', date: '2024-01-01' },
